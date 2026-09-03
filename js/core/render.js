@@ -1,8 +1,8 @@
 /**
  * render.js
  * ──────────────────────────────────────────────────────────────────────────────
- * Pure DOM rendering. Reads the navigation stack and repaints the UI.
- * Has zero knowledge of the data tree — it only knows about node shapes.
+ * Pure DOM rendering for the Notes tab.
+ * Now accepts a contentId param so it writes to the notes panel specifically.
  *
  * Depends on: icons.js (folderIcon), links.js (SESSION_LINKS)
  * Called by:  app.js
@@ -10,18 +10,17 @@
 
 const Render = (() => {
 
-  /* ── DOM refs (cached once) ── */
+  /* ── DOM refs ── */
   const $backBtn    = () => document.getElementById('backBtn');
   const $levelTitle = () => document.getElementById('levelTitle');
   const $breadcrumb = () => document.getElementById('breadcrumb');
-  const $content    = () => document.getElementById('content');
 
   /* ── Breadcrumb ── */
   function renderBreadcrumb(stack, onJump) {
     const el = $breadcrumb();
     el.innerHTML = '';
     stack.forEach((node, idx) => {
-      if (idx === 0) return; // skip root "Home"
+      if (idx === 0) return;
       if (idx > 1) {
         const sep = document.createElement('span');
         sep.className = 'sep';
@@ -36,9 +35,8 @@ const Render = (() => {
     });
   }
 
-  /* ── Empty / blank leaf ── */
-  function renderBlank(node) {
-    const content = $content();
+  /* ── Blank leaf (links or empty) ── */
+  function renderBlank(node, content) {
     const links = node.linksKey ? SESSION_LINKS[node.linksKey] : null;
     const hasLinks = links && (links.pdf || links.image);
 
@@ -72,9 +70,7 @@ const Render = (() => {
   }
 
   /* ── Folder grid ── */
-  function renderGrid(children, onOpen) {
-    const content = $content();
-
+  function renderGrid(children, onOpen, content) {
     if (children.length === 0) {
       const e = document.createElement('div');
       e.className = 'empty-state';
@@ -88,7 +84,6 @@ const Render = (() => {
     children.forEach(node => {
       const item = document.createElement('div');
       item.className = 'item' + (node.disabled ? ' disabled' : '');
-
       item.innerHTML = `
         <div class="item-icon">${folderIcon(node.disabled)}</div>
         <div class="item-text">
@@ -96,13 +91,11 @@ const Render = (() => {
           ${node.fullForm ? `<div class="subtitle">${node.fullForm}</div>` : ''}
         </div>
       `;
-
       if (!node.disabled) {
         item.onclick = () => onOpen(node);
       } else {
         item.setAttribute('aria-disabled', 'true');
       }
-
       grid.appendChild(item);
     });
 
@@ -110,7 +103,7 @@ const Render = (() => {
   }
 
   /* ── Main render ── */
-  function render(stack, onBack, onOpen, onJump) {
+  function render(stack, onBack, onOpen, onJump, contentId = 'notesContent') {
     const current = stack[stack.length - 1];
     const isRoot  = stack.length === 1;
 
@@ -119,16 +112,17 @@ const Render = (() => {
 
     renderBreadcrumb(stack, onJump);
 
-    $content().innerHTML = '';
+    const content = document.getElementById(contentId);
+    content.innerHTML = '';
 
     if (current.type === 'blank') {
-      renderBlank(current);
+      renderBlank(current, content);
     } else {
-      renderGrid(current.children || [], onOpen);
+      renderGrid(current.children || [], onOpen, content);
     }
   }
 
   return { render };
 
 })();
-        
+  
