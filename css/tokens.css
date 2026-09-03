@@ -1,0 +1,33 @@
+/*
+ * tokens.css
+ * ──────────────────────────────────────────────────────────────────────────────
+ * Single source of truth for every colour, radius, font-size, and timing value.
+ * To retheme the whole site, only edit this file.
+ */
+
+:root {
+  /* ── Palette ── */
+  --blue:        #4f8cff;
+  --blue-dark:   #7db0ff;
+
+  /* ── Surfaces ── */
+  --bg:          #000000;
+  --card:        #0e0e0e;
+  --card-hover:  #111111;
+  --card-border: #1e1e1e;
+  --card-border-hover: #2e2e2e;
+
+  /* ── Text ── */
+  --text:        #f0f1f3;
+  --muted:       #606470;
+  --muted2:      #3a3d45;
+
+  /* ── Radii ── */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+
+  /* ── Transitions ── */
+  --t-fast:      .15s;
+  --t-med:       .2s;
+}
