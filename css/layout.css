@@ -118,5 +118,46 @@ body {
 @media (max-width: 520px) {
   .item { padding: 16px !important; gap: 14px !important; }
   .item .name { font-size: 14px !important; }
-  }
-  
+}
+
+/* ── Tab bar ── */
+.tab-bar {
+  background: #000;
+  border-bottom: 1px solid #1a1a1a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.tab-bar-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 4px;
+}
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 14px 10px 12px;
+  cursor: pointer;
+  transition: color var(--t-fast), border-color var(--t-fast);
+  letter-spacing: 0.01em;
+  outline: none;
+  margin-bottom: -1px;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active {
+  color: var(--text);
+  border-bottom-color: var(--blue);
+}
+
+/* ── Panel ── */
+.panel { width: 100%; }
+        
