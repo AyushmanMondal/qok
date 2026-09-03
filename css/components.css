@@ -1,0 +1,132 @@
+/*
+ * components.css
+ * ──────────────────────────────────────────────────────────────────────────────
+ * Reusable UI components: back button, breadcrumb crumbs, folder cards,
+ * empty state, link panel buttons.
+ */
+
+/* ── Back button ── */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+  padding: 9px 18px;
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t-fast), transform .1s, opacity var(--t-med);
+  outline: none;
+  letter-spacing: 0.01em;
+}
+.back-btn:hover  { background: #161616; }
+.back-btn:active { transform: scale(.97); }
+.back-btn:disabled { opacity: 0; pointer-events: none; }
+
+/* ── Breadcrumb crumbs ── */
+.breadcrumb .crumb {
+  cursor: pointer;
+  padding: 3px 7px;
+  border-radius: var(--radius-sm);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.breadcrumb .crumb:hover { background: #181818; color: var(--text); }
+.breadcrumb .crumb.current { color: var(--text); font-weight: 600; cursor: default; }
+.breadcrumb .crumb.current:hover { background: none; }
+
+/* ── Folder / item card ── */
+.item {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+  width: 100%;
+  transition:
+    transform var(--t-fast) ease,
+    box-shadow var(--t-fast) ease,
+    border-color var(--t-fast) ease,
+    background var(--t-fast) ease;
+  min-height: 76px;
+}
+.item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(0,0,0,.55);
+  border-color: var(--card-border-hover);
+  background: var(--card-hover);
+}
+.item:active { transform: translateY(0); }
+
+.item-icon { flex-shrink: 0; }
+
+.item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+  flex: 1;
+}
+.item .name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+  word-break: break-word;
+}
+.item .subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* ── Disabled state ── */
+.item.disabled {
+  cursor: not-allowed;
+  opacity: .38;
+}
+.item.disabled:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--card-border);
+  background: var(--card);
+}
+
+/* ── Empty state ── */
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  padding: 80px 20px;
+  opacity: .6;
+}
+
+/* ── Link panel (leaf nodes with PDF / image links) ── */
+.link-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 40px 0;
+}
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--blue-dark);
+  padding: 11px 20px;
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--t-fast), transform .12s;
+}
+.link-btn:hover { background: #111; transform: translateY(-2px); }
