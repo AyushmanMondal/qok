@@ -1,0 +1,226 @@
+/*
+ * posts.css
+ * ──────────────────────────────────────────────────────────────────────────────
+ * All styles for the Posts tab: feed cards, single post detail, body blocks.
+ */
+
+/* ── Feed container ── */
+.posts-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.posts-empty {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13.5px;
+  padding: 80px 20px;
+  opacity: .6;
+}
+
+/* ── Post card (feed item) ── */
+.post-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  cursor: pointer;
+  position: relative;
+  transition:
+    transform var(--t-fast) ease,
+    box-shadow var(--t-fast) ease,
+    border-color var(--t-fast) ease,
+    background var(--t-fast) ease;
+}
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(0,0,0,.55);
+  border-color: var(--card-border-hover);
+  background: var(--card-hover);
+}
+.post-card:active { transform: translateY(0); }
+
+.post-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.post-date {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.post-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue-dark);
+  background: rgba(79,140,255,.12);
+  border: 1px solid rgba(79,140,255,.2);
+  border-radius: 20px;
+  padding: 2px 9px;
+  letter-spacing: 0.03em;
+}
+.post-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+.post-card-summary {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.post-card-arrow {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted2);
+  display: flex;
+  align-items: center;
+}
+
+/* ── Post detail ── */
+.post-detail {
+  max-width: 680px;
+}
+
+.post-back-row {
+  margin-bottom: 28px;
+}
+.post-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--muted);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast);
+  outline: none;
+}
+.post-back-btn:hover { background: #161616; color: var(--text); }
+
+.post-header {
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--card-border);
+}
+.post-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.post-detail-title {
+  margin: 0;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+/* ── Post body blocks ── */
+.post-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.post-body-text {
+  margin: 0;
+  font-size: 15px;
+  color: #c8cad0;
+  line-height: 1.75;
+}
+
+.post-body-heading {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  padding-top: 6px;
+}
+
+.post-divider {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 4px 0;
+}
+
+/* Image */
+.post-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.post-image {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+  display: block;
+  object-fit: cover;
+  max-height: 480px;
+}
+.post-caption {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Video */
+.post-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #0a0a0a;
+  border: 1px solid var(--card-border);
+}
+.post-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Link button */
+.post-link-wrap {
+  display: flex;
+}
+.post-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--blue-dark);
+  padding: 11px 20px;
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--t-fast), transform .12s;
+  cursor: pointer;
+}
+.post-link-btn:hover { background: #111; transform: translateY(-2px); }
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .post-card { padding: 16px; }
+  .post-card-title { font-size: 15px; }
+  .post-card-arrow { display: none; }
+  }
