@@ -1,15 +1,4 @@
-/**
- * icons.js
- * ──────────────────────────────────────────────────────────────────────────────
- * SVG icon generators. Add new icons here as the project grows.
- */
-
-/**
- * Folder icon.
- * @param {boolean} disabled - render in greyed-out palette
- * @returns {string} SVG markup string
- */
-function folderIcon(disabled = false) {
+function folderIcon(disabled=false) {
   const fill  = disabled ? '#2a2a2a' : '#2f6fed';
   const fillD = disabled ? '#222222' : '#1a46bb';
   return `<svg width="38" height="28" viewBox="0 0 38 28" xmlns="http://www.w3.org/2000/svg">
