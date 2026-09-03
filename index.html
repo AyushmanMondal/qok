@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Notes — Ayushman Mondal</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-label">Academic Notes</p>
+    <h1>Academic Notes
+      <span class="hero-by">by Ayushman Mondal</span>
+    </h1>
+  </div>
+
+  <!-- WAVE -->
+  <div class="wave-wrap">
+    <div class="wave-track">
+      <svg viewBox="0 0 1440 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="none" stroke="#ffffff" stroke-width="1.4"
+          d="M0,14 C120,28 240,0 360,14 C480,28 600,0 720,14 C840,28 960,0 1080,14 C1200,28 1320,0 1440,14"/>
+      </svg>
+      <svg viewBox="0 0 1440 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="none" stroke="#ffffff" stroke-width="1.4"
+          d="M0,14 C120,28 240,0 360,14 C480,28 600,0 720,14 C840,28 960,0 1080,14 C1200,28 1320,0 1440,14"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- APP SHELL -->
+  <div class="app">
+    <div class="toolbar">
+      <button class="back-btn" id="backBtn" onclick="App.goBack()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back
+      </button>
+      <span class="level-title" id="levelTitle"></span>
+    </div>
+
+    <div class="breadcrumb" id="breadcrumb"></div>
+    <div id="content"></div>
+  </div>
+
+  <!-- DATA — load order matters: links → exams → tree -->
+  <script src="js/data/links.js"></script>
+  <script src="js/data/exams.js"></script>
+  <script src="js/data/tree.js"></script>
+
+  <!-- CORE -->
+  <script src="js/core/icons.js"></script>
+  <script src="js/core/render.js"></script>
+  <script src="js/core/app.js"></script>
+
+</body>
+        </html>
+        
